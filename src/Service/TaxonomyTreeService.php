@@ -106,26 +106,26 @@ final readonly class TaxonomyTreeService implements TaxonomyTreeServiceInterface
         $this->operator->transactional(function () use ($node, $newParent, $treeId, $width): void {
             $this->operator->lockTree($treeId);
 
-            // Phase 1: Move subtree to negative space (avoids overlap during subsequent shifts)
+            // Step 1: Move subtree to negative space (avoids overlap during subsequent shifts)
             $negativeOffset = -($node->rgt + 1);
             $this->operator->shiftSubtree($treeId, $node->lft, $node->rgt, $negativeOffset);
 
-            // Phase 2: Close the gap left by the extracted subtree
+            // Step 2: Close the gap left by the extracted subtree
             $this->operator->shiftRight($treeId, $node->rgt, -$width);
             $this->operator->shiftLeft($treeId, $node->rgt, -$width);
 
-            // Phase 3: Make room at the destination position
+            // Step 3: Make room at the destination position
             if (null === $newParent) {
                 $destRgt = $this->operator->getMaxRgt($treeId) + 1;
                 $newLevel = 0;
             } else {
-                // Phase 2's gap-close shifted every boundary AFTER the extracted
+                // Step 2's gap-close shifted every boundary AFTER the extracted
                 // subtree down by $width, via DQL UPDATEs that bypass the identity
                 // map. When $newParent sat after the moved node its DB rgt is now
                 // stale in memory, so re-read the committed row before siting the
                 // destination (mirrors insertNode()'s refresh of $parent) --
                 // otherwise a stale rgt places the subtree outside $newParent.
-                // Phase 2's gap-close shifted every boundary AFTER the extracted
+                // Step 2's gap-close shifted every boundary AFTER the extracted
                 // subtree down by $width, via DQL UPDATEs that bypass the identity
                 // map. When $newParent sat after the moved node its DB rgt is now
                 // stale in memory, so re-read the committed row before siting the
@@ -144,7 +144,7 @@ final readonly class TaxonomyTreeService implements TaxonomyTreeServiceInterface
             $this->operator->shiftRight($treeId, $destRgt, $width);
             $this->operator->shiftLeft($treeId, $destRgt - 1, $width);
 
-            // Phase 4: Move subtree from negative space to destination
+            // Step 4: Move subtree from negative space to destination
             // Negative-space lft = node->lft + negativeOffset
             $negLft = $node->lft + $negativeOffset;
             $negRgt = $node->rgt + $negativeOffset;
