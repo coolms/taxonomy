@@ -141,9 +141,15 @@ jobs:
       # stricter here than for the family's other members, and it is the reason
       # the mapping lives in coolms/taxonomy-doctrine as XML. Doctrine's
       # Collections is a data structure and is allowed; the ORM and DBAL are not.
+      #
+      # !! MATCH THE IMPORT, NOT THE WORD. The first version of this grepped all
+      # of src/ and failed on a DOCBLOCK IN TaxonomyNode THAT STATES THE RULE --
+      # the sentence "it may not import `Doctrine\ORM\`" tripped the check that
+      # enforces it. Anchoring to `use` at line start asks about the construct
+      # instead, so prose describing the boundary can go on describing it.
       - name: Assert the domain imports no ORM
         run: |
-          if grep -rnE 'Doctrine\\+(ORM|DBAL)\\+' src/ ; then
+          if grep -rnE '^use +Doctrine\\(ORM|DBAL)\\' src/ ; then
             echo "::error::the domain package imports the ORM"
             exit 1
           fi
