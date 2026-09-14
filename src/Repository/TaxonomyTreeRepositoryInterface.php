@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace CoolMS\Taxonomy\Repository;
 
-use CoolMS\Taxonomy\Entity\TaxonomyTreeInterface;
 use CoolMS\Core\Identifier\IdentifierProviderInterface;
 use CoolMS\Core\Repository\RepositoryInterface;
 use CoolMS\Rql\RqlRepositoryInterface;
+use CoolMS\Taxonomy\Entity\TaxonomyTreeInterface;
 
 interface TaxonomyTreeRepositoryInterface extends RepositoryInterface, RqlRepositoryInterface
 {
