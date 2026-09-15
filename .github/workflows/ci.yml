@@ -103,20 +103,10 @@ jobs:
           fi
 
       - name: Lint sources
-        run: find src -name '*.php' -print0 | xargs -0 -n1 -P4 php -l
+        run: find src tests -name '*.php' -print0 | xargs -0 -n1 -P4 php -l
 
       - name: Run tests
-        run: |
-          # There are no tests in this package yet, so `tests/` is not in the
-          # repository at all and phpunit exits 2 on the missing directory.
-          # Failing a build for the absence of something nobody has written is
-          # noise; saying so in the log is not. This condition stops being true
-          # the moment the first test lands, and then they run.
-          if [ -z "$(find tests -name '*Test.php' 2>/dev/null)" ]; then
-              echo 'no tests in this package yet -- nothing was run'
-              exit 0
-          fi
-          vendor/bin/phpunit --testdox
+        run: vendor/bin/phpunit --testdox
 
 
   boundary:
