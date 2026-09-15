@@ -3,6 +3,10 @@
     "description": "Taxonomy trees and nodes: entities, repository contracts and the tree service.",
     "type": "library",
     "license": "MIT",
+    "support": {
+        "issues": "https://github.com/coolms/taxonomy/issues",
+        "source": "https://github.com/coolms/taxonomy"
+    },
     "require": {
         "php": "^8.5",
         "coolms/core": "^2.0",

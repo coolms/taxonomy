@@ -8,6 +8,10 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- Declares `support` -- `issues` and `source` -- so a page imported from this
+  package, and the catalogue, know where a correction is filed. Packagist filled
+  the gap from GitHub when the manifest was silent; the declared field is the
+  one that holds on any registry.
 **A test suite.** `phpunit.xml.dist`, the `tests/` namespace and the dev
 dependency, copied from the field family this package was built after. CI
 runs the suite outright: the step that printed "no tests in this package
