@@ -4,6 +4,17 @@ All notable changes to `coolms/taxonomy` are recorded here.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## Unreleased
+
+### Added
+
+**A test suite.** `phpunit.xml.dist`, the `tests/` namespace and the dev
+dependency, copied from the field family this package was built after. CI
+runs the suite outright: the step that printed "no tests in this package
+yet" and exited green is gone, so an empty suite now fails the build
+instead of reporting success over nothing. The first tests here are the
+ones the application had been carrying for this package: `TaxonomyNodeSlugTest`, `TaxonomyTreeServiceMoveTest`.
+
 ## 2.0.0-alpha1 - 2026-09-10
 
 **A pre-release. It carries no compatibility promise.** Composer will not install
