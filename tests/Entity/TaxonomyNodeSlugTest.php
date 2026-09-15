@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * The taxonomy-node slug-format rule: a machine-readable slug must be a
  * lowercase letter followed by lowercase letters, digits or hyphens -- the same
- * shape a DynamicEntityType alias requires.
+ * shape an entity-type alias requires.
  */
 #[CoversClass(TaxonomyNode::class)]
 final class TaxonomyNodeSlugTest extends TestCase
