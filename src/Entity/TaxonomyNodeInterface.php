@@ -52,9 +52,9 @@ interface TaxonomyNodeInterface extends IdentifierProviderInterface, LabelProvid
         get;
     }
 
+    // An implementation declares this value with #[DiscriminatorValue('...')].
     /**
-     * Returns the Doctrine discriminator value for this node type.
-     * Matches the value declared via #[DiscriminatorValue('...')].
+     * The kind of node this is: the name its subtype is stored under.
      */
     public string $type {
         get;
