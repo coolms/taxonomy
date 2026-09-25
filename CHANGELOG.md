@@ -20,6 +20,12 @@ yet" and exited green is gone, so an empty suite now fails the build
 instead of reporting success over nothing. The first tests here are the
 ones the application had been carrying for this package: `TaxonomyNodeSlugTest`, `TaxonomyTreeServiceMoveTest`.
 
+### Changed
+
+- `TaxonomyNodeInterface::$type` is documented as what it is, the kind of
+  node, and the API document an application publishes from it says the same.
+  How an implementation declares the value is in a code comment.
+
 ## 2.0.0-alpha1 - 2026-09-10
 
 **A pre-release. It carries no compatibility promise.** Composer will not install
