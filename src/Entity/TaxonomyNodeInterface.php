@@ -6,10 +6,11 @@ namespace CoolMS\Taxonomy\Entity;
 
 use CoolMS\Core\Hierarchy\NestedSetNodeInterface;
 use CoolMS\Core\Identifier\IdentifierProviderInterface;
+use CoolMS\Core\Timestampable\UpdatedAtProviderInterface;
 use CoolMS\Entity\LabelProviderInterface;
 use Doctrine\Common\Collections\Collection;
 
-interface TaxonomyNodeInterface extends IdentifierProviderInterface, LabelProviderInterface, NestedSetNodeInterface
+interface TaxonomyNodeInterface extends IdentifierProviderInterface, LabelProviderInterface, NestedSetNodeInterface, UpdatedAtProviderInterface
 {
     public string $slug {
         get;
