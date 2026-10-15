@@ -10,10 +10,11 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - `TaxonomyNodeInterface` and `TaxonomyTreeInterface` extend
   `UpdatedAtProviderInterface`. An application's timestampable listener sets
-  `updatedAt` on every update of an entity that provides it, so a tree's
-  `updatedAt` now moves when the tree is written; until now it kept the moment
-  the tree was created. A node already set it in its own pre-update callback,
-  which stays.
+  `updatedAt` on every update of an entity that provides it, so a tree's and a
+  node's `updatedAt` now move when they are written; until now each kept the
+  moment it was created. A class outside this package that implements either
+  interface must now provide `updatedAt` and `updatedAtAsString` as well
+  (`TimestampableTrait` brings both).
 
 ## 2.0.0-alpha2 - 2026-10-07
 
