@@ -4,6 +4,17 @@ All notable changes to `coolms/taxonomy` are recorded here.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## Unreleased
+
+### Changed
+
+- `TaxonomyNodeInterface` and `TaxonomyTreeInterface` extend
+  `UpdatedAtProviderInterface`. An application's timestampable listener sets
+  `updatedAt` on every update of an entity that provides it, so a tree's
+  `updatedAt` now moves when the tree is written; until now it kept the moment
+  the tree was created. A node already set it in its own pre-update callback,
+  which stays.
+
 ## 2.0.0-alpha2 - 2026-10-07
 
 ### Added
